@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Login</title>
+
+    <style>
+        body {
+            background-image: url('/imagens/fundo\ do\ site\ 1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: rgb(251, 250, 250);
+            font-size: 1.5em;
+        }
+
+        #loginContainer {
+            background-image: url('/gifs/login.gif');
+            background-size: 20%;
+            background-position: center;
+            padding: 10px;
+            border-radius: 2000px;
+            color: #f4f1f1;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        #welcomePage::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            animation: bubbles 20s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes bubbles {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #gifOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/gifs/sei\ la.gif') no-repeat center center fixed;
+            background-size: cover;
+            display: none;
+        }
+
+        #backButton {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #84617e;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #successImage {
+            display: none;
+            max-width: 20%;
+        }
+    </style>
+
+    <script>
+        function performLogin() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('welcomePage').style.display = 'block';
+            document.getElementById('gifOverlay').style.display = 'block';
+            document.getElementById('backButton').style.display = 'block';
+        }
+
+        function goBackToLogin() {
+            document.getElementById('loginContainer').style.display = 'inline-block';
+            document.getElementById('welcomePage').style.display = 'none';
+            document.getElementById('gifOverlay').style.display = 'none';
+            document.getElementById('backButton').style.display = 'none';
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Segurança em Sistemas de Login</h1>
+
+    <h2>Criptografia para Proteger Senhas:</h2>
+    <p><strong>Explicação Técnica:</strong> Criptografia é o processo de converter informações (como senhas) em <br> um formato ilegível, chamado de "hash". Usamos algoritmos criptográficos para garantir que <br>mesmo se as informações forem interceptadas, não possam ser compreendidas sem a chave correta <br> para descriptografá-las.</p>
+
+    <h2>Autenticação de Dois Fatores:</h2>
+    <p><strong>Explicação Técnica:</strong> Autenticação de dois fatores envolve o uso de duas formas diferentes de <br> verificações para confirmar a identidade do usuário. Além da senha, pode incluir um código enviado <br> para um dispositivo móvel ou uma chave física. Isso adiciona uma camada extra de segurança, <br> tornando mais difícil para os invasores acessarem uma conta, mesmo que tenham a senha.</p>
+
+    <h2>Ataques a Sistemas de Login e Como Evitá-los:</h2>
+    <p><strong>Explicação Técnica:</strong> Ataques comuns incluem força bruta (tentativas repetidas de adivinhar senhas),<br> ataques de phishing (enganar os usuários para divulgar informações) e ataques de injeção (inserir código malicioso). <br>Para evitar, implementamos práticas como bloqueio após tentativas fracassadas, educação sobre phishing e <br> validação rigorosa dos dados de entrada.</p>
+
+    <h1>Uso de Comandos em Linguagens de Programação</h1>
+
+    <h2>Como Usar Comandos para Autenticação:</h2>
+    <p><strong>Explicação Técnica:</strong> Na programação, usamos comandos ou instruções específicas para realizar tarefas, <br> como autenticação. Por exemplo, em Python, usamos comandos para verificar senhas, consultar bancos de <br> dados e autenticar usuários. Isso geralmente envolve o uso de funções específicas e estruturas de controle <br> de fluxo para garantir a autenticidade.</p>
+   
+    <div id="loginContainer">
+        <h1>Login</h1>
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button onclick="performLogin()">Fazer Login</button>
+    </div>
+
+    <div id="welcomePage" style="display: none;">
+        <button onclick="document.getElementById('gifOverlay').style.display = 'block'">Explorar</button>
+        <button id="backButton" onclick="goBackToLogin()">Voltar</button>
+    </div>
+    <div id="gifOverlay"></div>
+
+</body>
+</html>
